@@ -1,0 +1,106 @@
+# Make shortcuts for reloading
+alias reload exec ratpoison -c "source $HOME/.ratpoisonrc"
+bind C-r reload
+
+
+#Aliases
+alias twm tmpwm twm
+alias vtwm tmpwm vtwm
+alias term exec gnome-terminal 
+alias showroot exec ratpoison -c fdump; ratpoison -c 'select -' -c only
+alias unshowroot exec ratpoison -c "frestore at $HOME/.rpfdump"
+alias screensaver-on exec gnome-screensaver-command --activate
+alias screensaver-off exec gnome-screensaver-command --deactivate
+alias electricsheep exec electricsheep --root 1 --nick ragnarok416 --zoom 1 --mplayer 0 --history 50 --max-megabytes 20
+
+#
+##Ratpoison bindings
+#
+
+#NOTE: You can use xev to get keycodes (x event texter)
+
+bind C-c exec ratpoison -c "setenv fs1 `ratpoison -c 'fdump'`"
+bind C-v exec ratpoison -c "frestore `ratpoison -c 'getenv fs1'`"
+bind w exec ~/bin/windows
+bind W exec ~/bin/windows
+bind r resize
+bind semicolon colon
+bind colon exec
+bind C-z undo
+bind C-Z redo
+bind C-w twm
+bind B showroot
+bind BackSpace screensaver-on
+bind period exec ~/matt-scripts/ratpoison/mymenu
+bind s-s screensaver-on
+bind s-k delete
+bind s-K kill
+bind s-n next
+bind s-p prev
+bind s-a title
+bind s-d electricsheep
+bind s-D exec killall electricsheep
+bind s-w exec ~/bin/windows
+
+
+#
+##Shortcuts for apps
+#
+
+#NOTE: You can use xev to get keycodes (x event texter)
+
+bind F12 exec xfe
+bind F10 exec xzgv
+bind F9 exec aterm -e elinks
+bind F5 exec opera
+bind F6 exec iceweasel
+bind F7 exec icedove
+bind c term
+bind x exec xtrlock
+bind Delete exec sudo halt
+bind f exec firefox
+bind e exec $HOME/local/apps/eclipse/eclipse -vmargs -XX:PermSize=64M -XX:MaxPermSize=256M
+bind t exec thunderbird
+
+#
+## Desktop settings
+# 
+
+#Set the background
+exec xsetbg -border black -fork -type jpeg -fit -onroot -fullscreen "$HOME/Pictures/backgrounds/orange-gem.jpg"
+exec xsetroot -solid black -cursor_name left_ptr
+#electricsheep
+
+#Setup the screensaver
+exec gnome-screensaver-command --exit
+exec gnome-screensaver
+#exec xplanet -body earth -fork -random -light_time -transparency -wait 60   
+
+
+#
+## Other Settings
+#
+
+## Auto-name windows based on class
+set winname class
+
+##Set the mouse warping option.
+warp off
+
+##Setting the prefix keys
+escape Super_L
+
+###Set the ctrl-t key to something easier
+#definekey top Insert readkey root
+#definekey root Insert link less
+
+
+##Graphics tweaks
+###Not quite sure what these do, copied from Reactor Core.
+###Supposedly make borders take up less space.
+defborder 0
+defpadding 0 0 0 0
+defbarpadding 0 0
+
+###Show-the-root-window script
+
